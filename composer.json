@@ -1,0 +1,30 @@
+{
+  "name": "mparulski/collection-type",
+  "description": "The library Collection/Map and subtypes with checking the types for PHP",
+  "type": "library",
+  "keywords": [
+    "php",
+    "collection",
+    "map",
+    "type"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michał Parulski",
+      "email": "michal.parulski@gmail.com",
+      "role": "lead"
+    }
+  ],
+  "homepage": "https://github.com/mparulski/collection-type",
+  "support": {
+    "issues": "https://github.com/mparulski/collection-type/issues"
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "autoload": {
+    "psr-4": {"CollectionType\\": "src"}
+  }
+}
