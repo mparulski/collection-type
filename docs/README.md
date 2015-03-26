@@ -8,9 +8,9 @@ Welcome to the CollectionType documentation. This documentation will help you to
  
 2. [Library structure](/docs/2.LibraryStructure.md) 
 
-3. [Predefined types](/docs/3.PredefinedTypes.md)
+3. [Usage](/docs/3.Usage.md)
 
-4. [Usage](/docs/3.Usage.md)
+4. [Predefined types](/docs/4.PredefinedTypes.md)
 
 5. [CollectionType API](/docs/5.CollectionTypeAPI.md)
 
