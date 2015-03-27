@@ -19,7 +19,7 @@
 namespace CollectionType;
 
 
-interface CollectionInterface
+interface CollectionInterface extends IteratorInterface
 {
 
 }

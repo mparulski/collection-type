@@ -19,7 +19,7 @@
 namespace CollectionType;
 
 
-interface MapInterface extends IteratorInterface
+interface SortedInterface
 {
 
 }

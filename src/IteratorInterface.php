@@ -19,7 +19,23 @@
 namespace CollectionType;
 
 
-interface MapInterface extends IteratorInterface
+interface IteratorInterface
 {
+    public function getIterator();
 
+    public function clear();
+
+    public function isEmpty();
+
+    public function current();
+
+    public function next();
+
+    public function key();
+
+    public function first();
+
+    public function last();
+
+    public function rewind();
 }
