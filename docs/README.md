@@ -3,8 +3,8 @@ Welcome to the CollectionType documentation. This documentation will help you to
 1. [Introduction](/docs/01.Introduction.md)
     1. What is CollectionType library?
     2. How does it work?
-    3. When I need CollectionType library?
-    4. When I shouldn't use CollectionType library?
+    3. When you need CollectionType library?
+    4. When you shouldn't use CollectionType library?
  
 2. [Library structure](/docs/2.LibraryStructure.md) 
 
