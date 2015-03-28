@@ -1,39 +1,41 @@
 <?php
-use CollectionType\Type\StringType;
+namespace CollectionTypeTest;
 
-class StringTypeTest extends \PHPUnit_Framework_TestCase
+use CollectionType\Type\ArrayType;
+
+class ArrayTypeTest extends \PHPUnit_Framework_TestCase
 {
 
-    private $stringType;
+    private $arrayType;
 
     public function setUp()
     {
-        $this->stringType = new StringType();
+        $this->arrayType = new ArrayType();
     }
 
     public function tearDown()
     {
-        $this->stringType = null;
+        $this->arrayType = null;
     }
 
     /**
-     * @covers       CollectionType\Type\StringType::isValid
+     * @covers       CollectionType\Type\ArrayType::isValid
      * @dataProvider correctValuesDataProvider
      */
     public function testIsCorrectTypeSetCorrectValue($value)
     {
-        $result = $this->stringType->isValid($value);
+        $result = $this->arrayType->isValid($value);
 
         $this->assertTrue($result);
     }
 
     /**
-     * @covers       CollectionType\Type\StringType::isValid
+     * @covers       CollectionType\Type\ArrayType::isValid
      * @dataProvider incorrectValuesDataProvider
      */
     public function testIsCorrectTypeSetIncorrectValue($value)
     {
-        $result = $this->stringType->isValid($value);
+        $result = $this->arrayType->isValid($value);
 
         $this->assertFalse($result);
     }
@@ -42,16 +44,27 @@ class StringTypeTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [
-                ''
+                array()
             ],
             [
-                '1'
+                [
+                    1,
+                    2,
+                    3
+                ]
             ],
             [
-                'array()'
+                [
+                    '1',
+                    'two',
+                    '3.0'
+                ]
             ],
             [
-                'string'
+                [
+                    null,
+                    new \stdClass()
+                ]
             ]
         ];
     }
@@ -60,26 +73,19 @@ class StringTypeTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [
-                array()
+                PHP_INT_MAX + 1
             ],
             [
-                array(
-                    1,
-                    2,
-                    3
-                )
+                0.1
             ],
             [
-                1.1
+                -\PHP_INT_MAX - 1
             ],
             [
-                1.2e3
+                'string'
             ],
             [
                 1
-            ],
-            [
-                PHP_INT_MAX
             ],
             [
                 null

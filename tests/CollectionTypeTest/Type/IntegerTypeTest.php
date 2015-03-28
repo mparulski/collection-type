@@ -1,4 +1,6 @@
 <?php
+namespace CollectionTypeTest;
+
 use CollectionType\Type\IntegerType;
 
 class IntegerTypeTest extends \PHPUnit_Framework_TestCase
@@ -22,9 +24,9 @@ class IntegerTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsCorrectTypeSetCorrectValue($value)
     {
-        $retult = $this->integerType->isValid($value);
+        $result = $this->integerType->isValid($value);
 
-        $this->assertTrue($retult);
+        $this->assertTrue($result);
     }
 
     /**

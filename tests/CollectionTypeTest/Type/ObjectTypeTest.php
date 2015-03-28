@@ -1,4 +1,6 @@
 <?php
+namespace CollectionTypeTest;
+
 use CollectionType\Type\ObjectType;
 
 class ObjectTypeTest extends \PHPUnit_Framework_TestCase

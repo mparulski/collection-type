@@ -1,68 +1,59 @@
 <?php
-use CollectionType\Type\ArrayType;
+namespace CollectionTypeTest;
 
-class ArrayTypeTest extends \PHPUnit_Framework_TestCase
+use CollectionType\Type\FloatType;
+
+class FloatTypeTest extends \PHPUnit_Framework_TestCase
 {
 
-    private $arrayType;
+    private $floatType;
 
     public function setUp()
     {
-        $this->arrayType = new ArrayType();
+        $this->floatType = new FloatType();
     }
 
     public function tearDown()
     {
-        $this->arrayType = null;
+        $this->floatType = null;
     }
 
     /**
-     * @covers       CollectionType\Type\ArrayType::isValid
+     * @covers       CollectionType\Type\FloatType::isValid
      * @dataProvider correctValuesDataProvider
      */
     public function testIsCorrectTypeSetCorrectValue($value)
     {
-        $retult = $this->arrayType->isValid($value);
+        $result = $this->floatType->isValid($value);
 
-        $this->assertTrue($retult);
+        $this->assertTrue($result);
     }
 
     /**
-     * @covers       CollectionType\Type\ArrayType::isValid
+     * @covers       CollectionType\Type\FloatType::isValid
      * @dataProvider incorrectValuesDataProvider
      */
     public function testIsCorrectTypeSetIncorrectValue($value)
     {
-        $result = $this->arrayType->isValid($value);
+        $value = $this->floatType->isValid($value);
 
-        $this->assertFalse($result);
+        $this->assertFalse($value);
     }
 
     public function correctValuesDataProvider()
     {
         return [
             [
-                array()
+                PHP_INT_MAX + 1 //value: 2147483648 (on a 32-bit system)
             ],
             [
-                [
-                    1,
-                    2,
-                    3
-                ]
+                -\PHP_INT_MAX - 2 //value: -2147483649 (on a 32-bit system)
             ],
             [
-                [
-                    '1',
-                    'two',
-                    '3.0'
-                ]
+                0.0
             ],
             [
-                [
-                    null,
-                    new \stdClass()
-                ]
+                1.2e3
             ]
         ];
     }
@@ -71,19 +62,23 @@ class ArrayTypeTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [
-                PHP_INT_MAX + 1
+                1
             ],
             [
-                0.1
+                0
             ],
             [
-                -\PHP_INT_MAX - 1
+                PHP_INT_MAX //value: 2147483647 (on a 32-bit system)
             ],
             [
                 'string'
             ],
             [
-                1
+                [
+                    1,
+                    2,
+                    3
+                ]
             ],
             [
                 null

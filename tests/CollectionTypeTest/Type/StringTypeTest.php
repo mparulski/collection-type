@@ -1,57 +1,59 @@
 <?php
-use CollectionType\Type\FloatType;
+namespace CollectionTypeTest;
 
-class FloatTypeTest extends \PHPUnit_Framework_TestCase
+use CollectionType\Type\StringType;
+
+class StringTypeTest extends \PHPUnit_Framework_TestCase
 {
 
-    private $floatType;
+    private $stringType;
 
     public function setUp()
     {
-        $this->floatType = new FloatType();
+        $this->stringType = new StringType();
     }
 
     public function tearDown()
     {
-        $this->floatType = null;
+        $this->stringType = null;
     }
 
     /**
-     * @covers       CollectionType\Type\FloatType::isValid
+     * @covers       CollectionType\Type\StringType::isValid
      * @dataProvider correctValuesDataProvider
      */
     public function testIsCorrectTypeSetCorrectValue($value)
     {
-        $retult = $this->floatType->isValid($value);
+        $result = $this->stringType->isValid($value);
 
-        $this->assertTrue($retult);
+        $this->assertTrue($result);
     }
 
     /**
-     * @covers       CollectionType\Type\FloatType::isValid
+     * @covers       CollectionType\Type\StringType::isValid
      * @dataProvider incorrectValuesDataProvider
      */
     public function testIsCorrectTypeSetIncorrectValue($value)
     {
-        $value = $this->floatType->isValid($value);
+        $result = $this->stringType->isValid($value);
 
-        $this->assertFalse($value);
+        $this->assertFalse($result);
     }
 
     public function correctValuesDataProvider()
     {
         return [
             [
-                PHP_INT_MAX + 1 //value: 2147483648 (on a 32-bit system)
+                ''
             ],
             [
-                -\PHP_INT_MAX - 2 //value: -2147483649 (on a 32-bit system)
+                '1'
             ],
             [
-                0.0
+                'array()'
             ],
             [
-                1.2e3
+                'string'
             ]
         ];
     }
@@ -60,23 +62,26 @@ class FloatTypeTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [
-                1
+                array()
             ],
             [
-                0
-            ],
-            [
-                PHP_INT_MAX //value: 2147483647 (on a 32-bit system)
-            ],
-            [
-                'string'
-            ],
-            [
-                [
+                array(
                     1,
                     2,
                     3
-                ]
+                )
+            ],
+            [
+                1.1
+            ],
+            [
+                1.2e3
+            ],
+            [
+                1
+            ],
+            [
+                PHP_INT_MAX
             ],
             [
                 null

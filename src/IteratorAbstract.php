@@ -18,24 +18,59 @@
 
 namespace CollectionType;
 
-use Countable;
-use IteratorAggregate;
+use ArrayIterator;
 
-interface IteratorInterface extends Countable, IteratorAggregate
+abstract class IteratorAbstract implements IteratorInterface
 {
-    public function clear();
+    protected $values = [];
 
-    public function isEmpty();
+    public function getIterator()
+    {
+        return new ArrayIterator($this->values);
+    }
 
-    public function current();
+    public function count()
+    {
+        return count($this->values);
+    }
 
-    public function next();
+    public function clear()
+    {
+        $this->values = [];
+    }
 
-    public function key();
+    public function isEmpty()
+    {
+        return empty($this->values);
+    }
 
-    public function first();
+    public function current()
+    {
+        return current($this->values);
+    }
 
-    public function last();
+    public function next()
+    {
+        return next($this->values);
+    }
 
-    public function rewind();
+    public function key()
+    {
+        return key($this->values);
+    }
+
+    public function first()
+    {
+        return reset($this->values);
+    }
+
+    public function last()
+    {
+        return end($this->values);
+    }
+
+    public function rewind()
+    {
+        return reset($this->values);
+    }
 }
