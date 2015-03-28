@@ -16,28 +16,17 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace Fake;
 
-use Countable;
-use IteratorAggregate;
+use CollectionType\IteratorAbstract;
 
-interface IteratorInterface extends Countable, IteratorAggregate
+/**
+ * @codeCoverageIgnore
+ */
+class IteratorAbstractFake extends IteratorAbstract
 {
-    public function add($value);
-
-    public function clear();
-
-    public function isEmpty();
-
-    public function current();
-
-    public function next();
-
-    public function key();
-
-    public function first();
-
-    public function last();
-
-    public function rewind();
+    public function add($value)
+    {
+        $this->values[] = $value;
+    }
 }

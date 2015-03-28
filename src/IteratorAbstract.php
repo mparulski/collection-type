@@ -34,6 +34,8 @@ abstract class IteratorAbstract implements IteratorInterface
         return count($this->values);
     }
 
+    abstract public function add($value);
+
     public function clear()
     {
         $this->values = [];
