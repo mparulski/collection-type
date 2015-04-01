@@ -20,25 +20,27 @@ namespace CollectionType;
 
 use CollectionType\Type\TypeInterface;
 
-interface CollectionInterface extends IteratorInterface
+trait KeyTypeTrait
 {
-    public function equalType(TypeInterface $type);
+    /**
+     * @var TypeInterface $keyType - instance of TypeInterface implementation
+     */
+    private $keyType;
 
-    public function getType();
+    /**
+     * @param TypeInterface $type - type of keys
+     * @return void
+     */
+    private function setKeyType(TypeInterface $type)
+    {
+        $this->keyType = $type;
+    }
 
-    public function getAll();
-
-    public function addAll(CollectionInterface $collection);
-
-    public function toArray();
-
-    public function remove($value);
-
-    public function removeAll(CollectionInterface $collection);
-
-    public function contains($value);
-
-    public function containsAll(CollectionInterface $collection);
-
-    public function equals(CollectionInterface $collection);
+    /**
+     * @return TypeInterface - return of instance TypeInterface
+     */
+    private function getKeyType()
+    {
+        return $this->keyType;
+    }
 }

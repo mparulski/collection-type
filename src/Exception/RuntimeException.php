@@ -1,5 +1,5 @@
 <?php
-namespace Utils\CollectionType\Exception;
+namespace CollectionType\Exception;
 
 class RuntimeException extends \RuntimeException
 {

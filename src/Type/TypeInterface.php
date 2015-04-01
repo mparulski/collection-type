@@ -5,7 +5,6 @@ interface TypeInterface
 {
 
     /**
-     *
      * @return boolean
      */
     public function isValid($value);

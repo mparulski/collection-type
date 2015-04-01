@@ -16,29 +16,18 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace Fake;
 
-use CollectionType\Type\TypeInterface;
 
-interface CollectionInterface extends IteratorInterface
+use CollectionType\CollectionAbstract;
+
+/**
+ * @codeCoverageIgnore
+ */
+class CollectionAbstractFake extends CollectionAbstract
 {
-    public function equalType(TypeInterface $type);
-
-    public function getType();
-
-    public function getAll();
-
-    public function addAll(CollectionInterface $collection);
-
-    public function toArray();
-
-    public function remove($value);
-
-    public function removeAll(CollectionInterface $collection);
-
-    public function contains($value);
-
-    public function containsAll(CollectionInterface $collection);
-
-    public function equals(CollectionInterface $collection);
+    public function add($value)
+    {
+        $this->values[] = $value;
+    }
 }
