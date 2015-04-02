@@ -14,7 +14,3 @@
 3. [MapAbstract](/docs/api/5_2.MapAbstractAPI.md)
     1. [HashMap](/docs/api/5_4.HashMapAPI.md)
     2. [TreeMap](/docs/api/5_4.TreeMapAPI.md)
-    
-4. [ValueTypeTrait](/docs/api/5_1.ValueTypeTraitAPI.md)
-
-5. [KeyTypeTrait](/docs/api/5_1.KeyTypeTraitAPI.md)
