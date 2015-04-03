@@ -18,29 +18,18 @@
 
 namespace CollectionType;
 
-use CollectionType\Exception\InvalidTypeException;
-use CollectionType\Type\TypeInterface;
-
-final class HashSet extends SetAbstract
+trait CollectionTypeUtilTrait
 {
 
-    public function __construct(TypeInterface $type)
+    private function twoArraysDiff(array $from, array $against)
     {
-        parent::__construct($type);
-    }
+        return array_udiff($from, $against, function ($fromElement, $againstElement) {
 
-    public function add($value)
-    {
-        if (!$this->getType()->isValid($value)) {
-            throw new InvalidTypeException(sprintf('The value is incorrect type. %s given!', gettype($value)));
-        }
+            if (is_object($fromElement) && is_object($againstElement)) {
+                return strcmp(spl_object_hash($fromElement), spl_object_hash($againstElement));
+            }
 
-        if ($this->contains($value)) {
-            return false;
-        }
-
-        $this->values[] = $value;
-
-        return true;
+            return $fromElement !== $againstElement;
+        });
     }
 }

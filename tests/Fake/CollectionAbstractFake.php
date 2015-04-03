@@ -20,14 +20,37 @@ namespace Fake;
 
 
 use CollectionType\CollectionAbstract;
+use CollectionType\CollectionInterface;
+use CollectionType\Exception\InvalidTypeException;
+use CollectionType\Type\TypeInterface;
 
 /**
  * @codeCoverageIgnore
  */
 class CollectionAbstractFake extends CollectionAbstract
 {
+    public function __construct(TypeInterface $type)
+    {
+        parent::__construct($type);
+    }
+
+    /**
+     * Fake method
+     *
+     * @param $value
+     */
     public function add($value)
     {
         $this->values[] = $value;
+    }
+
+    /**
+     * Fake method
+     *
+     * @param CollectionInterface $collection
+     */
+    public function addAll(CollectionInterface $collection)
+    {
+        throw new InvalidTypeException('This is fake method!');
     }
 }

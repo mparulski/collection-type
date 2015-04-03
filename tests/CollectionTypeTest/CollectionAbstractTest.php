@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -66,53 +66,6 @@ class CollectionAbstractTest extends \PHPUnit_Framework_TestCase
         $result = $this->collection->getAll();
 
         $this->assertEquals(['A', 'B', 'C', 'D', 'E'], $result);
-    }
-
-    /**
-     * @expectedException \CollectionType\Exception\InvalidTypeException
-     *
-     * @covers       CollectionType\CollectionAbstract::addAll
-     * @covers       CollectionType\CollectionAbstract::getType
-     * @covers       CollectionType\ValueTypeTrait::getValueType
-     */
-    public function testAddAllForWrongTypeCollectionThrowException()
-    {
-        $dummy = $this->prophesize('CollectionType\Type\IntegerType');
-        $dummy->willImplement('CollectionType\Type\TypeInterface');
-        $intDummy = $dummy->reveal();
-        $intCollection = new CollectionAbstractFake($intDummy);
-
-        $this->collection->addAll($intCollection);
-    }
-
-    /**
-     * @covers       CollectionType\CollectionAbstract::addAll
-     */
-    public function testAddAllForEmptyAndEmpty()
-    {
-        $addedCollection = clone $this->collection;
-        $this->collection->addAll($addedCollection);
-
-        $this->assertEquals([], $this->collection->getAll());
-    }
-
-    /**
-     * @covers       CollectionType\CollectionAbstract::addAll
-     */
-    public function testAddAllForDifferentValues()
-    {
-        $addedCollection = clone $this->collection;
-
-        $this->collection->add('A');
-        $this->collection->add('B');
-        $this->collection->add('C');
-
-        $addedCollection->add('D');
-        $addedCollection->add('E');
-
-        $this->collection->addAll($addedCollection);
-
-        $this->assertEquals(['A', 'B', 'C', 'D', 'E'], $this->collection->getAll());
     }
 
     /**

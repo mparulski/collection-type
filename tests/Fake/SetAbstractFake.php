@@ -16,14 +16,16 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace Fake;
 
-use CollectionType\Exception\InvalidTypeException;
+use CollectionType\SetAbstract;
 use CollectionType\Type\TypeInterface;
 
-final class HashSet extends SetAbstract
+/**
+ * @codeCoverageIgnore
+ */
+class SetAbstractFake extends SetAbstract
 {
-
     public function __construct(TypeInterface $type)
     {
         parent::__construct($type);
@@ -31,16 +33,6 @@ final class HashSet extends SetAbstract
 
     public function add($value)
     {
-        if (!$this->getType()->isValid($value)) {
-            throw new InvalidTypeException(sprintf('The value is incorrect type. %s given!', gettype($value)));
-        }
-
-        if ($this->contains($value)) {
-            return false;
-        }
-
         $this->values[] = $value;
-
-        return true;
     }
 }
