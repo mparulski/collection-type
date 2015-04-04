@@ -12,6 +12,18 @@ Welcome to the CollectionType documentation. This documentation will help you to
 
 4. [Types](/docs/4.Types.md)
 
+    1. Predefined types
+        1. Scalar types
+            1. IntegerType
+            2. FloatType
+            3. StringType
+        2. Compound types
+            1. ArrayType
+            2. ObjectType
+        3. Special type
+            1. NullType
+    2. How to create own type
+
 5. [API](/docs/5.API.md)
 
     1. [IteratorAbstract API](/docs/api/5_1.IteratorAbstractAPI.md)
