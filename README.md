@@ -16,7 +16,7 @@ CollectionType officially supports only installation through Composer. For Compo
 Install the module:
 
 ```sh
-$ php composer.phar require mparulski/collection-type:dev-master
+$ php composer.phar require mparulski/collection-type:0.1.0
 ```
 
 ## Documentation
