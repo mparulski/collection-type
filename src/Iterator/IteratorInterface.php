@@ -16,15 +16,13 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\Iterator;
 
 use Countable;
 use IteratorAggregate;
 
 interface IteratorInterface extends Countable, IteratorAggregate
 {
-    public function add($value);
-
     public function clear();
 
     public function isEmpty();

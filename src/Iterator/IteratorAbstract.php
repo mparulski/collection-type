@@ -16,7 +16,7 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\Iterator;
 
 use ArrayIterator;
 
@@ -33,8 +33,6 @@ abstract class IteratorAbstract implements IteratorInterface
     {
         return count($this->values);
     }
-
-    abstract public function add($value);
 
     public function clear()
     {
