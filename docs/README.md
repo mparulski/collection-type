@@ -40,3 +40,7 @@ Welcome to the CollectionType documentation. This documentation will help you to
     3. [MapAbstract API](/docs/api/5_2.MapAbstractAPI.md)
         1. [HashMap API](/docs/api/5_4.HashMapAPI.md)
         2. [TreeMap API](/docs/api/5_4.TreeMapAPI.md)
+        
+    4. [Common API](docs/api/5_2.CommonAPI.md)
+        1. [ValueTypeTrait API](/docs/api/5_3.ValueTypeTraitAPI.md)
+        2. [KeyTypeTrait API](/docs/api/5_3.KeyTypeTraitAPI.md)
