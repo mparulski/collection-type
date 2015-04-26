@@ -16,31 +16,18 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace Fake\Common;
 
-use CollectionType\Type\TypeInterface;
+use CollectionType\Common\KeyTypeTrait;
+use CollectionType\TypeValidator\TypeValidatorInterface;
 
-trait KeyTypeTrait
+class KeyTypeTraitFake
 {
-    /**
-     * @var TypeInterface $keyType - instance of TypeInterface implementation
-     */
-    private $keyType;
 
-    /**
-     * @param TypeInterface $type - type of keys
-     * @return void
-     */
-    private function setKeyType(TypeInterface $type)
-    {
-        $this->keyType = $type;
-    }
+    use KeyTypeTrait;
 
-    /**
-     * @return TypeInterface - return of instance TypeInterface
-     */
-    private function getKeyType()
+    public function __construct(TypeValidatorInterface $type)
     {
-        return $this->keyType;
+        $this->setKeyType($type);
     }
 }

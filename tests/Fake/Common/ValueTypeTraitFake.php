@@ -16,31 +16,18 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace Fake\Common;
 
-use CollectionType\Exception\InvalidTypeException;
-use CollectionType\Type\TypeInterface;
+use CollectionType\Common\ValueTypeTrait;
+use CollectionType\TypeValidator\TypeValidatorInterface;
 
-final class HashSet extends SetAbstract
+class ValueTypeTraitFake
 {
 
-    public function __construct(TypeInterface $type)
+    use ValueTypeTrait;
+
+    public function __construct(TypeValidatorInterface $type)
     {
-        parent::__construct($type);
-    }
-
-    public function add($value)
-    {
-        if (!$this->getType()->isValid($value)) {
-            throw new InvalidTypeException(sprintf('The value is incorrect type. %s given!', gettype($value)));
-        }
-
-        if ($this->contains($value)) {
-            return false;
-        }
-
-        $this->values[] = $value;
-
-        return true;
+        $this->setValueType($type);
     }
 }

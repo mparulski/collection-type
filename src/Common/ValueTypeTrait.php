@@ -16,31 +16,37 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\Common;
 
-use CollectionType\Type\TypeInterface;
+use CollectionType\Exception\InvalidTypeException;
+use CollectionType\TypeValidator\TypeValidatorInterface;
 
 trait ValueTypeTrait
 {
-    /**
-     * @var TypeInterface $valueType - instance of TypeInterface implementation
-     */
+    /** @var $valueType \CollectionType\TypeValidator\TypeValidatorInterface */
     private $valueType;
 
-    /**
-     * @param TypeInterface $type - type of values
-     * @return void
-     */
-    private function setValueType(TypeInterface $type)
+    public function equalValueType(TypeValidatorInterface $valueType)
     {
-        $this->valueType = $type;
+        return ($this->valueType == $valueType);
     }
 
-    /**
-     * @return TypeInterface - return of instance TypeInterface
-     */
-    private function getValueType()
+    public function getValueType()
     {
         return $this->valueType;
+    }
+
+    private function validateValueType($value)
+    {
+        if (!$this->valueType->isValid($value)) {
+            throw new InvalidTypeException(sprintf('The value is incorrect type. %s given!', gettype($value)));
+        }
+
+        return true;
+    }
+
+    private function setValueType(TypeValidatorInterface $valueType)
+    {
+        $this->valueType = $valueType;
     }
 }
