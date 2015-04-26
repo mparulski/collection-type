@@ -3,7 +3,7 @@
 
 [![License](https://poser.pugx.org/mparulski/collection-type/license.svg)](https://packagist.org/packages/mparulski/collection-type)
 [![Latest Stable Version](https://poser.pugx.org/mparulski/collection-type/v/stable.svg)](https://packagist.org/packages/mparulski/collection-type)
-[![Total Downloads](https://poser.pugx.org/mparulski/collection-type/downloads.svg)](https://packagist.org/packages/mparulski/collection-type)
+[![Total Downloads](https://poser.pugx.org/mparulski/collection-type/downloads)](https://packagist.org/packages/mparulski/collection-type)
 
 CollectionType is a library that provides Collection and Map with their subtypes which are checking types of data set for PHP.
 
