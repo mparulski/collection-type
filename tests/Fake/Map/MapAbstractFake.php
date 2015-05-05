@@ -16,21 +16,28 @@
  * and is licensed under the MIT license.
  */
 
-namespace Fake\Common;
+namespace Fake\Map;
 
-use CollectionType\Common\ValueTypeTrait;
-use CollectionType\TypeValidator\TypeValidatorInterface;
+use CollectionType\Map\MapAbstract;
 
 /**
  * @codeCoverageIgnore
  */
-class ValueTypeTraitFake
+class MapAbstractFake extends MapAbstract
 {
-
-    use ValueTypeTrait;
-
-    public function __construct(TypeValidatorInterface $type)
+    /**
+     * Fake method only for unit tests
+     */
+    public function putKey($key)
     {
-        $this->setValueType($type);
+        $this->keys[] = $key;
+    }
+
+    /**
+     * Fake method only for unit tests
+     */
+    public function putValue($value)
+    {
+        $this->values[] = $value;
     }
 }

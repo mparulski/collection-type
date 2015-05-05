@@ -16,21 +16,25 @@
  * and is licensed under the MIT license.
  */
 
-namespace Fake\Common;
+namespace CollectionTypeTest\Collection\CollectionList\ArrayList;
 
-use CollectionType\Common\ValueTypeTrait;
-use CollectionType\TypeValidator\TypeValidatorInterface;
+use CollectionType\Collection\CollectionList\ArrayList;
 
-/**
- * @codeCoverageIgnore
- */
-class ValueTypeTraitFake
+class ConstructorTest extends \PHPUnit_Framework_TestCase
 {
-
-    use ValueTypeTrait;
-
-    public function __construct(TypeValidatorInterface $type)
+    /**
+     * @covers       CollectionType\Collection\CollectionList\ArrayList::__construct
+     * @covers       CollectionType\Collection\CollectionList\ListAbstract::__construct
+     * @covers       CollectionType\Collection\CollectionAbstract::__construct
+     * @covers       CollectionType\Common\ValueTypeTrait::setValueType
+     */
+    public function testConstruct()
     {
-        $this->setValueType($type);
+        $dummyType = $this->prophesize('CollectionType\TypeValidator\StringTypeValidator');
+        $dummyType->willImplement('CollectionType\TypeValidator\TypeValidatorInterface');
+
+        $list = new ArrayList($dummyType->reveal());
+
+        $this->assertEquals($dummyType->reveal(), $list->getValueType());
     }
 }

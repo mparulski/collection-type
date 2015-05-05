@@ -21,6 +21,9 @@ namespace Fake\Common;
 use CollectionType\Common\KeyTypeTrait;
 use CollectionType\TypeValidator\TypeValidatorInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class KeyTypeTraitFake
 {
 

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -16,21 +16,40 @@
  * and is licensed under the MIT license.
  */
 
-namespace Fake\Common;
+namespace Fake\Collection;
 
-use CollectionType\Common\ValueTypeTrait;
+use CollectionType\Collection\CollectionAbstract;
+use CollectionType\Collection\CollectionInterface;
+use CollectionType\Exception\InvalidTypeException;
 use CollectionType\TypeValidator\TypeValidatorInterface;
 
 /**
  * @codeCoverageIgnore
  */
-class ValueTypeTraitFake
+class CollectionAbstractFake extends CollectionAbstract
 {
-
-    use ValueTypeTrait;
-
     public function __construct(TypeValidatorInterface $type)
     {
-        $this->setValueType($type);
+        parent::__construct($type);
+    }
+
+    /**
+     * Fake method
+     *
+     * @param $value
+     */
+    public function add($value)
+    {
+        $this->values[] = $value;
+    }
+
+    /**
+     * Fake method
+     *
+     * @param CollectionInterface $collection
+     */
+    public function addAll(CollectionInterface $collection)
+    {
+        throw new InvalidTypeException('This is fake method!');
     }
 }

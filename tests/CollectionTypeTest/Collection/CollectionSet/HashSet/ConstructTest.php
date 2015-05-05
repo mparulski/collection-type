@@ -16,21 +16,25 @@
  * and is licensed under the MIT license.
  */
 
-namespace Fake\Common;
+namespace CollectionTypeTest\Collection\CollectionSet\HashSet;
 
-use CollectionType\Common\ValueTypeTrait;
-use CollectionType\TypeValidator\TypeValidatorInterface;
+use CollectionType\Collection\CollectionSet\HashSet;
 
-/**
- * @codeCoverageIgnore
- */
-class ValueTypeTraitFake
+class ConstructorTest extends \PHPUnit_Framework_TestCase
 {
-
-    use ValueTypeTrait;
-
-    public function __construct(TypeValidatorInterface $type)
+    /**
+     * @covers       CollectionType\Collection\CollectionSet\HashSet::__construct
+     * @covers       CollectionType\Collection\CollectionSet\SetAbstract::__construct
+     * @covers       CollectionType\Collection\CollectionAbstract::__construct
+     * @covers       CollectionType\Common\ValueTypeTrait::setValueType
+     */
+    public function testConstruct()
     {
-        $this->setValueType($type);
+        $dummyType = $this->prophesize('CollectionType\TypeValidator\StringTypeValidator');
+        $dummyType->willImplement('CollectionType\TypeValidator\TypeValidatorInterface');
+
+        $this->set = new HashSet($dummyType->reveal());
+
+        $this->assertEquals($dummyType->reveal(), $this->set->getValueType());
     }
 }

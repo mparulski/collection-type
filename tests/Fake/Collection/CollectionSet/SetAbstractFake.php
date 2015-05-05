@@ -16,21 +16,18 @@
  * and is licensed under the MIT license.
  */
 
-namespace Fake\Common;
+namespace Fake\Collection\CollectionSet;
 
-use CollectionType\Common\ValueTypeTrait;
+use CollectionType\Collection\CollectionSet\SetAbstract;
 use CollectionType\TypeValidator\TypeValidatorInterface;
 
 /**
  * @codeCoverageIgnore
  */
-class ValueTypeTraitFake
+class SetAbstractFake extends SetAbstract
 {
-
-    use ValueTypeTrait;
-
     public function __construct(TypeValidatorInterface $type)
     {
-        $this->setValueType($type);
+        parent::__construct($type);
     }
 }

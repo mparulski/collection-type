@@ -16,21 +16,45 @@
  * and is licensed under the MIT license.
  */
 
-namespace Fake\Common;
+namespace CollectionTypeTest\Iterator\IteratorAbstract;
 
-use CollectionType\Common\ValueTypeTrait;
-use CollectionType\TypeValidator\TypeValidatorInterface;
+use Fake\Iterator\IteratorAbstractFake;
 
-/**
- * @codeCoverageIgnore
- */
-class ValueTypeTraitFake
+class IsEmptyTest extends \PHPUnit_Framework_TestCase
 {
+    /** @var \Fake\Iterator\IteratorAbstractFake $iterator */
+    private $iterator;
 
-    use ValueTypeTrait;
-
-    public function __construct(TypeValidatorInterface $type)
+    public function setUp()
     {
-        $this->setValueType($type);
+        $this->iterator = new IteratorAbstractFake();
+    }
+
+    public function tearDown()
+    {
+        $this->iterator = null;
+    }
+
+    /**
+     * @covers       CollectionType\Iterator\IteratorAbstract::isEmpty
+     */
+    public function testIsEmptyForNoneValues()
+    {
+        $result = $this->iterator->isEmpty();
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * @covers       CollectionType\Iterator\IteratorAbstract::isEmpty
+     */
+    public function testIsEmptyForFewValues()
+    {
+        $this->iterator->add('A');
+        $this->iterator->add('B');
+
+        $result = $this->iterator->isEmpty();
+
+        $this->assertFalse($result);
     }
 }

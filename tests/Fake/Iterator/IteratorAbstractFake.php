@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -16,21 +16,17 @@
  * and is licensed under the MIT license.
  */
 
-namespace Fake\Common;
+namespace Fake\Iterator;
 
-use CollectionType\Common\ValueTypeTrait;
-use CollectionType\TypeValidator\TypeValidatorInterface;
+use CollectionType\Iterator\IteratorAbstract;
 
 /**
  * @codeCoverageIgnore
  */
-class ValueTypeTraitFake
+class IteratorAbstractFake extends IteratorAbstract
 {
-
-    use ValueTypeTrait;
-
-    public function __construct(TypeValidatorInterface $type)
+    public function add($value)
     {
-        $this->setValueType($type);
+        $this->values[] = $value;
     }
 }
