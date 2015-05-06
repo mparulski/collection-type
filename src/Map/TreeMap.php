@@ -15,14 +15,37 @@
  * This software consists of voluntary contributions made by many individuals
  * and is licensed under the MIT license.
  */
-namespace CollectionType\Type;
 
-interface TypeInterface
+namespace CollectionType\Map;
+
+use CollectionType\Map\Sorted\SortedMapInterface;
+use CollectionType\TypeValidator\TypeValidatorInterface;
+
+final class TreeMap extends MapAbstract implements SortedMapInterface
 {
+    public function __construct(TypeValidatorInterface $keyType, TypeValidatorInterface $valueType)
+    {
+        parent::__construct($keyType, $valueType);
+    }
 
-    /**
-     * @param mixed $value - value to verify type
-     * @return bool
-     */
-    public function isValid($value);
+    public function put($key, $value)
+    {
+        parent::put($key, $value);
+        $this->sort();
+
+        return true;
+    }
+
+    public function putAll(MapInterface $map)
+    {
+        parent::putAll($map);
+        $this->sort();
+
+        return true;
+    }
+
+    public function sort()
+    {
+        return array_multisort($this->keys, $this->values);
+    }
 }

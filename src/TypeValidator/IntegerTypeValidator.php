@@ -16,20 +16,13 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\TypeValidator;
 
-trait CollectionTypeUtilTrait
+class IntegerTypeValidator implements TypeValidatorInterface
 {
 
-    private function twoArraysDiff(array $from, array $against)
+    public function isValid($value)
     {
-        return array_udiff($from, $against, function ($fromElement, $againstElement) {
-
-            if (is_object($fromElement) && is_object($againstElement)) {
-                return strcmp(spl_object_hash($fromElement), spl_object_hash($againstElement));
-            }
-
-            return $fromElement !== $againstElement;
-        });
+        return is_integer($value);
     }
 }

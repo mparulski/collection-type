@@ -16,13 +16,11 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType\Type;
+namespace CollectionType\Map\Sorted;
 
-class IntegerType implements TypeInterface
+use CollectionType\Common\Sorted\SortedInterface;
+
+interface SortedMapInterface extends SortedInterface
 {
 
-    public function isValid($value)
-    {
-        return is_integer($value);
-    }
 }

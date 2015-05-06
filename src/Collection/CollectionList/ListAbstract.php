@@ -16,53 +16,44 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType\Common;
+namespace CollectionType\Collection\CollectionList;
 
+use CollectionType\Collection\CollectionAbstract;
 use CollectionType\Exception\InvalidTypeException;
 use CollectionType\TypeValidator\TypeValidatorInterface;
 
-trait KeyTypeTrait
+abstract class ListAbstract extends CollectionAbstract implements ListInterface
 {
-    /**
-     * @var $keyType \CollectionType\TypeValidator\TypeValidatorInterface
-     */
-    private $keyType;
-
-    public function equalKeyType(TypeValidatorInterface $keyType)
+    public function __construct(TypeValidatorInterface $valueType)
     {
-        return ($this->keyType == $keyType);
+        parent::__construct($valueType);
     }
 
-    public function getKeyType()
+    public function add($value)
     {
-        return $this->keyType;
+        if (!$this->getValueType()->isValid($value)) {
+            throw new InvalidTypeException(sprintf('The value is incorrect type. %s given!', gettype($value)));
+        }
+
+        $this->values[] = $value;
+
+        return true;
     }
 
-    private function validateKeyType(TypeValidatorInterface $keyType)
+    public function addAll(ListInterface $collection)
     {
-        if (!$this->equalKeyType($keyType)) {
+        if (!$this->equalType($collection->getValueType())) {
             throw new InvalidTypeException(
                 sprintf(
-                    'The key type is incorrect type. %s given!',
-                    get_class($keyType)
+                    'The collection is incorrect type. %s given. Must be: %s type!',
+                    get_class($collection->getValueType()),
+                    get_class($this->getValueType())
                 )
             );
         }
 
-        return true;
-    }
-
-    private function validateValueForKeyType($key)
-    {
-        if (!$this->keyType->isValid($key)) {
-            throw new InvalidTypeException(sprintf('The key is incorrect type. %s given!', gettype($key)));
-        }
+        $this->values = array_merge($this->values, $collection->toArray());
 
         return true;
-    }
-
-    private function setKeyType(TypeValidatorInterface $keyType)
-    {
-        $this->keyType = $keyType;
     }
 }

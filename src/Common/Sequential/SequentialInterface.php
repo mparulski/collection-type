@@ -16,13 +16,15 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType\Type;
+namespace CollectionType\Common\Sequential;
 
-class ObjectType implements TypeInterface
+use CollectionType\Collection\CollectionInterface;
+
+interface SequentialInterface
 {
+    public function getKey($value);
 
-    public function isValid($value)
-    {
-        return is_object($value);
-    }
+    public function set($index, $value);
+
+    public function setAll($index, CollectionInterface $collection);
 }

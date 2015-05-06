@@ -16,9 +16,13 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\TypeValidator;
 
-interface SortedMapInterface extends SortedInterface
+class ArrayTypeValidator implements TypeValidatorInterface
 {
 
+    public function isValid($value)
+    {
+        return is_array($value);
+    }
 }

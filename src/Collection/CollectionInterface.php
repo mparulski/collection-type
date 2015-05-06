@@ -16,13 +16,36 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType\Type;
+namespace CollectionType\Collection;
 
-class ArrayType implements TypeInterface
+use CollectionType\Iterator\IteratorInterface;
+use CollectionType\TypeValidator\TypeValidatorInterface;
+
+interface CollectionInterface extends IteratorInterface
 {
+    public function equalValueType(TypeValidatorInterface $valueType);
 
-    public function isValid($value)
-    {
-        return is_array($value);
-    }
+    public function getValueType();
+
+    public function equalType(TypeValidatorInterface $type);
+
+    public function equals(CollectionInterface $collection);
+
+    public function getAll();
+
+    public function toArray();
+
+    public function add($value);
+
+    public function remove($value);
+
+    public function removeAll(CollectionInterface $collection);
+
+    public function removeAny(CollectionInterface $collection);
+
+    public function contains($value);
+
+    public function containsAll(CollectionInterface $collection);
+
+    public function getDifference(CollectionInterface $collection);
 }

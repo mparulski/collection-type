@@ -16,9 +16,25 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\Common\Util;
 
-interface ListInterface extends CollectionInterface
+trait UtilTrait
 {
-    public function addAll(ListInterface $collection);
+
+    private function diffArrays(array $from, array $against)
+    {
+        return array_udiff($from, $against, function ($fromElement, $againstElement) {
+
+            if (is_object($fromElement) && is_object($againstElement)) {
+                return strcmp(spl_object_hash($fromElement), spl_object_hash($againstElement));
+            }
+
+            return $fromElement !== $againstElement;
+        });
+    }
+
+    private function equalArrays(array $from, array $against)
+    {
+        return empty($this->diffArrays($from, $against));
+    }
 }

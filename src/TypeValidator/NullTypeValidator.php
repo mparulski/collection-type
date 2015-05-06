@@ -16,27 +16,13 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\TypeValidator;
 
-use CollectionType\Type\TypeInterface;
-
-interface CollectionInterface extends IteratorInterface
+class NullTypeValidator implements TypeValidatorInterface
 {
-    public function equalType(TypeInterface $type);
 
-    public function getType();
-
-    public function getAll();
-
-    public function toArray();
-
-    public function remove($value);
-
-    public function removeAll(CollectionInterface $collection);
-
-    public function contains($value);
-
-    public function containsAll(CollectionInterface $collection);
-
-    public function equals(CollectionInterface $collection);
+    public function isValid($value)
+    {
+        return is_null($value);
+    }
 }

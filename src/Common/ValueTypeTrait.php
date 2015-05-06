@@ -23,7 +23,9 @@ use CollectionType\TypeValidator\TypeValidatorInterface;
 
 trait ValueTypeTrait
 {
-    /** @var $valueType \CollectionType\TypeValidator\TypeValidatorInterface */
+    /**
+     * @var $valueType \CollectionType\TypeValidator\TypeValidatorInterface
+     */
     private $valueType;
 
     public function equalValueType(TypeValidatorInterface $valueType)
@@ -36,7 +38,21 @@ trait ValueTypeTrait
         return $this->valueType;
     }
 
-    private function validateValueType($value)
+    protected function validateValueType(TypeValidatorInterface $valueType)
+    {
+        if (!$this->equalValueType($valueType)) {
+            throw new InvalidTypeException(
+                sprintf(
+                    'The value type is incorrect type. %s given!',
+                    get_class($valueType)
+                )
+            );
+        }
+
+        return true;
+    }
+
+    protected function validateValueForValueType($value)
     {
         if (!$this->valueType->isValid($value)) {
             throw new InvalidTypeException(sprintf('The value is incorrect type. %s given!', gettype($value)));

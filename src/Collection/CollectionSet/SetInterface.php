@@ -16,9 +16,11 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\Collection\CollectionSet;
 
-interface SortedSetInterface extends SortedInterface
+use CollectionType\Collection\CollectionInterface;
+
+interface SetInterface extends CollectionInterface
 {
-
+    public function addAll(SetInterface $collection);
 }

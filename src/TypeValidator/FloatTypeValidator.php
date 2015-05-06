@@ -16,13 +16,13 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType\Type;
+namespace CollectionType\TypeValidator;
 
-class NullType implements TypeInterface
+class FloatTypeValidator implements TypeValidatorInterface
 {
 
     public function isValid($value)
     {
-        return is_null($value);
+        return is_float($value);
     }
 }

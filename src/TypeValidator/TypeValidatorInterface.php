@@ -15,10 +15,14 @@
  * This software consists of voluntary contributions made by many individuals
  * and is licensed under the MIT license.
  */
+namespace CollectionType\TypeValidator;
 
-namespace CollectionType;
-
-interface SortedInterface
+interface TypeValidatorInterface
 {
 
+    /**
+     * @param mixed $value - value to verify type
+     * @return bool
+     */
+    public function isValid($value);
 }

@@ -16,33 +16,38 @@
  * and is licensed under the MIT license.
  */
 
-namespace CollectionType;
+namespace CollectionType\Collection\CollectionSet;
 
-use CollectionType\Exception\InvalidTypeException;
-use CollectionType\Type\TypeInterface;
+use CollectionType\Collection\CollectionAbstract;
+use CollectionType\Common\Util\UtilTrait;
+use CollectionType\TypeValidator\TypeValidatorInterface;
 
 abstract class SetAbstract extends CollectionAbstract implements SetInterface
 {
-    use CollectionTypeUtilTrait;
+    use UtilTrait;
 
-    public function __construct(TypeInterface $type)
+    public function __construct(TypeValidatorInterface $valueType)
     {
-        parent::__construct($type);
+        parent::__construct($valueType);
+    }
+
+    public function add($value)
+    {
+        if ($this->contains($value)) {
+            return false;
+        }
+
+        $this->values[] = $value;
+
+        return true;
     }
 
     public function addAll(SetInterface $collection)
     {
-        if (!$this->equalType($collection->getType())) {
-            throw new InvalidTypeException(
-                sprintf(
-                    'The collection is incorrect type. %s given. Must be: %s type!',
-                    get_class($collection->getType()),
-                    get_class($this->getType())
-                )
-            );
-        }
 
-        $uniqueValues = $this->twoArraysDiff($collection->toArray(), $this->values);
+        $this->validateValueType($collection->getValueType());
+
+        $uniqueValues = $this->diffArrays($collection->toArray(), $this->values);
 
         $this->values = array_merge($this->values, $uniqueValues);
 

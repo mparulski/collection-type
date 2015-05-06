@@ -15,10 +15,13 @@
  * This software consists of voluntary contributions made by many individuals
  * and is licensed under the MIT license.
  */
+namespace CollectionType\TypeValidator;
 
-namespace CollectionType;
-
-interface SetInterface extends CollectionInterface
+class StringTypeValidator implements TypeValidatorInterface
 {
-    public function addAll(SetInterface $collection);
+
+    public function isValid($value)
+    {
+        return is_string($value);
+    }
 }

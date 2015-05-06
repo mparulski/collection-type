@@ -15,13 +15,12 @@
  * This software consists of voluntary contributions made by many individuals
  * and is licensed under the MIT license.
  */
-namespace CollectionType\Type;
 
-class StringType implements TypeInterface
+namespace CollectionType\Collection\CollectionSet\Sequential;
+
+use CollectionType\Common\Sequential\SequentialInterface;
+
+interface SequentialSetInterface extends SequentialInterface
 {
 
-    public function isValid($value)
-    {
-        return is_string($value);
-    }
 }
