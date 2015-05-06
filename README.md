@@ -20,7 +20,7 @@ CollectionType officially supports only installation through Composer. For Compo
 Install the module:
 
 ```sh
-$ php composer.phar require mparulski/collection-type:0.4.0
+$ php composer.phar require mparulski/collection-type:0.*
 ```
 
 ## Example:
