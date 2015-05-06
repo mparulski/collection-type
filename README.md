@@ -20,14 +20,29 @@ CollectionType officially supports only installation through Composer. For Compo
 Install the module:
 
 ```sh
-$ php composer.phar require mparulski/collection-type:0.1.0
+$ php composer.phar require mparulski/collection-type:0.2.0
+```
+
+## Example:
+-----------
+    
+```php
+use CollectionType\Collection\CollectionSet\HashSet;
+use CollectionType\TypeValidator\ObjectTypeValidator;
+    
+$set = new HashSet(new IntegerTypeValidator());
+    
+$set->add(1);
+$set->add(5);
+
+// throw exception
+$set->add(7.2);
 ```
 
 ## Documentation
 ----------------
 
 Documentation is available in the [/docs](/docs) folder.
-
 
 # LICENSE
 

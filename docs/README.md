@@ -10,7 +10,7 @@ Welcome to the CollectionType documentation. This documentation will help you to
 
 3. [Usage](/docs/3.Usage.md)
 
-4. [Types](/docs/4.Types.md)
+4. [Types](/docs/4.TypeValidators.md)
 
     1. Predefined types
         1. Scalar types
@@ -26,21 +26,24 @@ Welcome to the CollectionType documentation. This documentation will help you to
 
 5. [API](/docs/5.API.md)
 
-    1. [IteratorAbstract API](/docs/api/5_1.IteratorAbstractAPI.md)
+    1. [Collection API](/docs/api/5.1.0.0.0.0.CollectionAPI.md)
+        1. [IteratorAbstract API](/docs/api/5.1.1.0.0.0.IteratorAbstractAPI.md)
+            1. [CollectionAbstract API](/docs/api/5.1.1.1.0.0.CollectionAbstractAPI.md)
+                1. [ListAbstract API](/docs/api/5.1.1.1.1.0.ListAbstractAPI.md)
+                    1. [ArrayList API](/docs/api/5.1.1.1.1.1.ArrayListAPI.md)
+                    2. [LinkedList API](/docs/api/5.1.1.1.1.2.LinkedListAPI.md)
+                2. [SetAbstract API](/docs/api/5.1.1.1.2.0.SetAbstractAPI.md)
+                    1. [LinkedSet API](/docs/api/5.1.1.1.2.1.LinkedSetAPI.md)
+                    2. [HashSet API](/docs/api/5.1.1.1.2.2.HashSetAPI.md)
+                    3. [TreeSet API](/docs/api/5.1.1.1.2.3.TreeSetAPI.md)
     
-    2. [CollectionAbstract API](/docs/api/5_2.CollectionAbstractAPI.md)
-        1. [ListAbstract API](/docs/api/5_3.ListAbstractAPI.md)
-            1. [ArrayList API](/docs/api/5_4.ArrayListAPI.md)    
-            2. [LinkedList API](/docs/api/5_4.LinkedListAPI.md)    
-        2. [SetAbstract API](/docs/api/5_3.SetAbstractAPI.md)
-            1. [HashSet API](/docs/api/5_4.HashSetAPI.md)
-            2. [LinkedSet API](/docs/api/5_4.LinkedSetAPI.md)
-            3. [TreeSet API](/docs/api/5_4.TreeSetAPI.md)
-        
-    3. [MapAbstract API](/docs/api/5_2.MapAbstractAPI.md)
-        1. [HashMap API](/docs/api/5_4.HashMapAPI.md)
-        2. [TreeMap API](/docs/api/5_4.TreeMapAPI.md)
-        
-    4. [Common API](docs/api/5_2.CommonAPI.md)
-        1. [ValueTypeTrait API](/docs/api/5_3.ValueTypeTraitAPI.md)
-        2. [KeyTypeTrait API](/docs/api/5_3.KeyTypeTraitAPI.md)
+    
+    2. [Map API](/docs/api/5.2.0.0.MapAPI.md)
+        1. [MapAbstract API](/docs/api/5.2.1.0.MapAbstractAPI.md)
+            1. [TreeMap API](/docs/api/5.2.1.1.TreeMapAPI.md)
+            2. [HashMap API](/docs/api/5.2.1.2.HashMapAPI.md)
+    
+    
+    3. [Common API](/docs/api/5.3.0.CommonAPI.md)
+        1. [KeyTypeTrait API](/docs/api/5.3.1.KeyTypeTraitAPI.md)
+        2. [ValueTypeTrait API](/docs/api/5.3.2.ValueTypeTraitAPI.md)
