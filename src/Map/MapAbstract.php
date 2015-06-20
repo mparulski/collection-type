@@ -178,6 +178,36 @@ abstract class MapAbstract implements MapInterface
         return true;
     }
 
+    public function removeKeyAll(MapInterface $map)
+    {
+        if (!$this->containsKeyAll($map)) {
+            return false;
+        }
+
+        $keys = $map->keys();
+
+        foreach ($keys as $index => $keyValue) {
+            $this->remove($keyValue);
+        }
+
+        return true;
+    }
+
+    public function removeAll(MapInterface $map)
+    {
+        if (!$this->containsAll($map)) {
+            return false;
+        }
+
+        $keys = $map->keys();
+
+        foreach ($keys as $index => $keyValue) {
+            $this->remove($keyValue);
+        }
+
+        return true;
+    }
+
     public function removeValue($value)
     {
         $this->validateValueForValueType($value);
@@ -193,14 +223,14 @@ abstract class MapAbstract implements MapInterface
 
     public function removeValueAll(MapInterface $map)
     {
-        if (!$this->containsAll($map)) {
+        if (!$this->containsValueAll($map)) {
             return false;
         }
 
-        $keys = $map->keys();
+        $values = $map->values();
 
-        foreach ($keys as $index => $keyValue) {
-            $this->remove($keyValue);
+        foreach ($values as $index => $value) {
+            $this->removeValue($value);
         }
 
         return true;
@@ -211,6 +241,26 @@ abstract class MapAbstract implements MapInterface
         $this->validateValueForKeyType($key);
 
         return in_array($key, $this->keys);
+    }
+
+    public function containsKeyAll(MapInterface $map)
+    {
+        $this->validateKeyType($map->getKeyType());
+        $this->validateValueType($map->getValueType());
+
+        $diffKeys = $this->diffArrays($map->keys(), $this->keys);
+
+        return empty($diffKeys);
+    }
+
+    public function containsValueAll(MapInterface $map)
+    {
+        $this->validateKeyType($map->getKeyType());
+        $this->validateValueType($map->getValueType());
+
+        $diffValues = $this->diffArrays($map->values(), $this->values);
+
+        return empty($diffValues);
     }
 
     public function containsValue($value)
