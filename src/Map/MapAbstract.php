@@ -151,7 +151,8 @@ abstract class MapAbstract implements MapInterface
         $keys = $map->keys();
         $values = $map->values();
 
-        foreach ($keys as $keyNumberOfKeys => $keyValue) {
+        $collectionKeys = new \ArrayIterator($keys);
+        foreach (new \IteratorIterator($collectionKeys) as $keyNumberOfKeys => $keyValue) {
             $this->put($keys[$keyNumberOfKeys], $values[$keyNumberOfKeys]);
         }
 
@@ -186,7 +187,8 @@ abstract class MapAbstract implements MapInterface
 
         $keys = $map->keys();
 
-        foreach ($keys as $index => $keyValue) {
+        $collectionKeys = new \ArrayIterator($keys);
+        foreach (new \IteratorIterator($collectionKeys) as $index => $keyValue) {
             $this->remove($keyValue);
         }
 
@@ -201,7 +203,8 @@ abstract class MapAbstract implements MapInterface
 
         $keys = $map->keys();
 
-        foreach ($keys as $index => $keyValue) {
+        $collectionKeys = new \ArrayIterator($keys);
+        foreach (new \IteratorIterator($collectionKeys) as $index => $keyValue) {
             $this->remove($keyValue);
         }
 
@@ -229,7 +232,8 @@ abstract class MapAbstract implements MapInterface
 
         $values = $map->values();
 
-        foreach ($values as $index => $value) {
+        $collectionValues = new \ArrayIterator($values);
+        foreach (new \IteratorIterator($collectionValues) as $index => $value) {
             $this->removeValue($value);
         }
 

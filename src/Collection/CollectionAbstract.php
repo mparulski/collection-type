@@ -85,7 +85,8 @@ abstract class CollectionAbstract extends IteratorAbstract implements Collection
             return false;
         }
 
-        foreach ($collection as $value) {
+        $collectionIterator = new \ArrayIterator($collection->toArray());
+        foreach (new \IteratorIterator($collectionIterator) as $value) {
             $this->remove($value);
         }
 
@@ -96,7 +97,8 @@ abstract class CollectionAbstract extends IteratorAbstract implements Collection
     {
         $this->validateValueType($collection->getValueType());
 
-        foreach ($collection as $value) {
+        $collectionIterator = new \ArrayIterator($collection->toArray());
+        foreach (new \IteratorIterator($collectionIterator) as $value) {
             $this->remove($value);
         }
 
